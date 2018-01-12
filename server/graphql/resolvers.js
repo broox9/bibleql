@@ -1,4 +1,4 @@
-const dbClient = require('./db')
+const dbClient = require('../db')
 
 const rootValue = {
   /* = Whole Verse Queries */

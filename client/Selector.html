@@ -1,0 +1,25 @@
+<label>
+  <slot></slot>
+  <select id="{{id}}" on:change='handleChange(event)'>
+    {{#each list as item}}
+    <option value='{{item.book_id}}'>{{item.book_name}}</option>
+    {{/each}}
+  </select>
+</label>
+
+<script>
+  export default {
+    oncreate() {
+      // this.store.observe('bookList', list => console.log('list changed', list))
+    },
+    methods: {
+      handleChange(e) {
+        console.log('E', e.target.value)
+        const bookId = e.target.value
+        this.store.set({
+          currentBook: this.store.get('bookList')[bookId - 1]
+        })
+      }
+    }
+  }
+</script>

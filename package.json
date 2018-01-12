@@ -4,8 +4,12 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "nodemon server/server.js",
-    "start:prod": "NODE_ENV=production nodemon server/server.js",
+    "build": "./node_modules/.bin/webpack",
+    "server": "nodemon server/server.js",
+    "start": "npm run build && npm run server",
+    "watch": "npm run build -- -w",
+    "start:dev": "npm run server && npm run watch",
+    "start:prod": "NODE_ENV=production npm start",
     "start:alternate": "nodemon server/pg-gql-server.js"
   },
   "repository": {
@@ -21,7 +25,10 @@
   "homepage": "https://github.com/broox9/bibleql#readme",
   "dependencies": {
     "apollo-server-express": "^1.3.2",
+    "axios": "^0.17.1",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
     "graphql": "^0.12.3",
@@ -29,5 +36,10 @@
     "nodemon": "^1.14.6",
     "pg": "^7.4.0",
     "postgraphql": "^3.5.4"
+  },
+  "devDependencies": {
+    "svelte": "^1.50.1",
+    "svelte-loader": "^2.3.3",
+    "webpack": "^3.10.0"
   }
 }

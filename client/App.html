@@ -1,0 +1,20 @@
+<h3>App</h3>
+
+<Selector list={{$bookList}} :id>
+  {{$selectorTitle}}
+</Selector>
+
+{{#if $currentBook}}
+<Selector list={{$bookList}} :id>
+  {{$selectorTitle}}
+</Selector>
+{{/if}}
+
+<script>
+  import Selector from "./Selector.html";
+
+  export default {
+    components: { Selector },
+    data: () => ({ id: 'book-list-selector' })
+  };
+</script>
