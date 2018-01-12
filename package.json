@@ -4,12 +4,13 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
+    "prepm2": "npm run build",
+    "pm2": "NODE_ENV=production pm2 server/server.js",
     "build": "./node_modules/.bin/webpack",
     "server": "nodemon server/server.js",
     "start": "npm run build && npm run server",
     "watch": "npm run build -- -w",
     "start:dev": "npm run server && npm run watch",
-    "start:prod": "NODE_ENV=production npm start",
     "start:alternate": "nodemon server/pg-gql-server.js"
   },
   "repository": {
