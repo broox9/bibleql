@@ -1,0 +1,38 @@
+<label>
+  <slot></slot>
+  <select id="chapter-selector" on:change='handleChange(event)'>
+    <option>select chapter</option>
+    {{#each chapterNumber as chapter}}
+    <option value={{chapter}}>{{chapter}}</option>
+    {{/each}}
+  </select>
+</label>
+
+<script>
+  export default {
+    oncreate() {
+      this.observe('count', count => this.setChapterNumbers(count))
+
+    },
+    data: () => ({ chapterNumber: [] }),
+    ondestroy() {
+      console.log("Destroying Chapter Selector", this)
+    },
+    methods: {
+      handleChange(e) {
+        const currentChapter = e.target.value
+        this.store.set({ currentChapter })
+      },
+      setChapterNumbers(count) {
+        console.log('SETTING book CHapters')
+        const chapterNumber = []
+        for (let i = 0; i < count; i++) {
+          chapterNumber.push(i + 1)
+        }
+        this.set({
+          chapterNumber
+        })
+      }
+    }
+  }
+</script>

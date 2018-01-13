@@ -5,8 +5,9 @@
   "main": "server/server.js",
   "scripts": {
     "prepm2": "npm run build",
-    "pm2": "NODE_ENV=production pm2 server/server.js",
+    "pm2": "NODE_ENV=production pm2 start server/server.js",
     "build": "./node_modules/.bin/webpack",
+    "watchify": "./node_modules/.bin/watchify ./client/index.js -t -o ./public/app.js -t [ sveltify ] -t [ babelify --presets [ env ] --extensions [ .js .html] ] ",
     "server": "nodemon server/server.js",
     "start": "npm run build && npm run server",
     "watch": "npm run build -- -w",
@@ -36,11 +37,16 @@
     "graphql-tools": "^2.14.1",
     "nodemon": "^1.14.6",
     "pg": "^7.4.0",
-    "postgraphql": "^3.5.4"
-  },
-  "devDependencies": {
+    "postgraphql": "^3.5.4",
     "svelte": "^1.50.1",
     "svelte-loader": "^2.3.3",
     "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^15.1.0",
+    "sveltify": "^1.2.0",
+    "watchify": "^3.9.0"
   }
 }

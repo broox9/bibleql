@@ -1,20 +1,21 @@
 <h3>App</h3>
 
-<Selector list={{$bookList}} :id>
-  {{$selectorTitle}}
-</Selector>
+<BookSelector list={{$bookList}} />
+<br/>
+<br/> {{#if $currentBook}}
+<ChapterSelector count={{$chapters}} /> {{/if}}
 
-{{#if $currentBook}}
-<Selector list={{$bookList}} :id>
-  {{$selectorTitle}}
-</Selector>
-{{/if}}
+<section>
+  <ReadingPane />
+</section>
 
 <script>
-  import Selector from "./Selector.html";
+  import BookSelector from "./components/BookSelector.html";
+  import ChapterSelector from "./components/ChapterSelector.html";
+  import ReadingPane from "./components/ReadingPane.html";
 
   export default {
-    components: { Selector },
+    components: { ChapterSelector, BookSelector, ReadingPane },
     data: () => ({ id: 'book-list-selector' })
   };
 </script>

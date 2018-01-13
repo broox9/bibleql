@@ -1,6 +1,7 @@
 <label>
   <slot></slot>
-  <select id="{{id}}" on:change='handleChange(event)'>
+  <select id="book-selector" on:change='handleChange(event)'>
+    <option>Select A Book</option>
     {{#each list as item}}
     <option value='{{item.book_id}}'>{{item.book_name}}</option>
     {{/each}}

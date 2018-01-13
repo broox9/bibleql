@@ -1,7 +1,8 @@
 const path = require('path')
 
-module.exports = () => {
+module.exports = (env) => {
   return {
+    devtool: 'cheap-eval-source-map',
     entry: {
       app: [path.resolve(__dirname, 'client/index.js')]
     },
@@ -21,8 +22,8 @@ module.exports = () => {
           use: {
             loader: 'svelte-loader',
             options: {
-              emitCss: true,
-              cascade: false,
+              // emitCss: true,
+              // cascade: false,
               store: true
             }
           }

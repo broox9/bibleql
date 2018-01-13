@@ -1,0 +1,45 @@
+{{#if $chapterData && $chapterData.length}}
+<section class="reading-pane">
+  <h3>{{$currentBookName}}</h3>
+  <ul>
+    {{#each $chapterData as v}}
+    <li data-verse-id={{v.verseid}}>
+      <strong class="verse-number">{{v.verse}}</strong> {{v.words}}
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
+<script>
+  export default {
+    oncreate() {
+      // this.store.observe('chapterData', data => console.log('chapter data', data))
+    }
+  }
+</script>
+
+<style>
+  .reading-pane {
+    font-family: San Francisco, Roboto, Helvetica Neue, sans-serif;
+    font-weight: 400;
+    background-color: #ccf8cc;
+    padding: 8px;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0 0 12px 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 0;
+    margin: 0;
+  }
+</style>
