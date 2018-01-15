@@ -1,9 +1,10 @@
 <h3>App</h3>
 
-<BookSelector list={{$bookList}} />
-<br/>
-<br/> {{#if $currentBook}}
-<ChapterSelector count={{$chapters}} /> {{/if}}
+<main>
+  <BookSelector list={{$bookList}} /> {{#if $currentBook}}
+  <ChapterSelector count={{$chapters}} /> {{/if}}
+</main>
+
 
 <section>
   <ReadingPane />
@@ -15,7 +16,6 @@
   import ReadingPane from "./components/ReadingPane.html";
 
   export default {
-    components: { ChapterSelector, BookSelector, ReadingPane },
-    data: () => ({ id: 'book-list-selector' })
+    components: { ChapterSelector, BookSelector, ReadingPane }
   };
 </script>

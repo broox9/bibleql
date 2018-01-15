@@ -15,7 +15,6 @@
     },
     methods: {
       handleChange(e) {
-        console.log('E', e.target.value)
         const bookId = e.target.value
         this.store.set({
           currentBook: this.store.get('bookList')[bookId - 1]
