@@ -25,6 +25,7 @@ module.exports = `
     clusterid: Int,
     divine: Int,
     implied: Int,
+    red: Int,
     lang_order: Int,
     paragraph: Int,
     orig_id: Int,

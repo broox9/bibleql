@@ -1,7 +1,7 @@
 <label>
   <slot></slot>
   <select id="chapter-selector" on:change='handleChange(event)'>
-    <option>select chapter</option>
+    <option>chapters</option>
     {{#each chapterNumber as chapter}}
     <option value={{chapter}}>{{chapter}}</option>
     {{/each}}

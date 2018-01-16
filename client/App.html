@@ -1,21 +1,39 @@
-<h3>App</h3>
-
-<main>
+<header>
+  <h1>{{$currentBookName || 'Select a book'}} {{$currentChapter || ''}}</h1>
   <BookSelector list={{$bookList}} /> {{#if $currentBook}}
   <ChapterSelector count={{$chapters}} /> {{/if}}
+</header>
+
+<main>
+  <WordsPane />
+  <VersePane />
 </main>
-
-
-<section>
-  <ReadingPane />
-</section>
 
 <script>
   import BookSelector from "./components/BookSelector.html";
   import ChapterSelector from "./components/ChapterSelector.html";
-  import ReadingPane from "./components/ReadingPane.html";
+  import VersePane from "./components/VersePane.html";
+  import WordsPane from "./components/WordsPane.html";
 
   export default {
-    components: { ChapterSelector, BookSelector, ReadingPane }
+    components: { ChapterSelector, BookSelector, VersePane, WordsPane }
   };
 </script>
+
+<style>
+  header {
+    background-color: #102027;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0 0 0.5rem;
+    padding: 0;
+  }
+
+  main {
+    padding: 1em;
+  }
+</style>

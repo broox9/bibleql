@@ -6,6 +6,7 @@ const store = new Store({
   currentBook: null,
   currentChapter: null,
   chapterData: [],
+  wordChapterData: []
 });
 
 store.compute(
@@ -22,7 +23,8 @@ store.compute(
 
 store.onchange((state, changed) => {
   if (changed.currentChapter) {
-    fetchChapter(state.currentBook.book_id, state.currentChapter)
+    // fetchChapter(state.currentBook.book_id, state.currentChapter)
+    fetchWordChapter(state.currentBook.book_id, state.currentChapter)
   }
 })
 
@@ -59,6 +61,27 @@ function fetchChapter(book, chapter) {
   })
     .then(({ data: { data: chapter } }) => {
       store.set({ chapterData: chapter.chapter })
+    })
+    .catch(e => { console.log(e) })
+}
+
+function fetchWordChapter(book, chapter) {
+  const queryObject = {
+    query: `{ wordChapter(book: ${book}, chapter: ${chapter}) { verse, word, divine, implied, red, head, clusterid, lang_order }}`
+    // query: `{ wordPassage(startId: 43003001, endId: 43003019) { verse, word }}`
+  }
+
+  axios({
+    method: 'post',
+    url: '/api',
+    headers: { 'Content-Type': 'application/json' },
+    data: JSON.stringify(queryObject)
+  })
+    .then(resp => {
+
+      const wordChapterData = resp.data.data.wordChapter
+      store.set({ wordChapterData })
+      console.log('RESP', resp.data)
     })
     .catch(e => { console.log(e) })
 } 

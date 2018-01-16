@@ -1,0 +1,52 @@
+{{#if $wordChapterData && $wordChapterData.length}}
+<section class="reading-pane">
+  {{#each $wordChapterData as w}} {{#if !w.word}}
+  <br />
+  <br /> {{/if}}
+  <span class="{{ w.divine ? 'divine': ''}} {{ w.red ? 'red' : ''}} {{w.implied ? implied : ''}}">{{w.word}}&nbsp;</span>
+  {{/each}}
+</section>
+{{/if}}
+
+<script>
+  export default {
+    oncreate() {
+      // this.store.observe('chapterData', data => console.log('chapter data', data))
+    }
+  }
+</script>
+
+<style>
+  .reading-pane {
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+
+  .red {
+    color: #e99;
+  }
+
+  .divine {
+    text-transform: uppercase;
+  }
+
+  .implied {
+    font-style: italic;
+  }
+
+  br {
+    line-height: 1.5
+  }
+
+  .verse-number {
+    color: #62727b;
+    display: inline-block;
+    flex-basis: 1.5rem;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0 0 12px 0;
+  }
+</style>

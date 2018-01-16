@@ -35,8 +35,8 @@ const rootValue = {
     //default is Genesis ch 1
     return dbClient.query(`
       SELECT * FROM public.bible_en
-      WHERE verseid = $1 AND lang_order > 0
-      ORDER BY lang_order ASC`, [book, chapter]
+      WHERE book = $1 AND chapter = $2 AND NOT (lang_order = 0 AND clusterid > 1)
+      ORDER BY id ASC`, [book, chapter]
     )
       .then(res => res.rows)
       .catch(e => console.log(e))
