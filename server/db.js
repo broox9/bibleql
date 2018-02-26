@@ -6,14 +6,14 @@ const creds_path = path.join(process.env.CREDENTIALS_PATH, "db.json");
 console.log("path", creds_path);
 const { bibleql } = require(creds_path);
 const dbcreds =
-  process.env.NODE_ENV === "production" ? bibleql.aws : bibleql.local;
-const { host, pwd, user, db } = dbcreds;
+  process.env.NODE_ENV === "production" ? bibleql.jaws : bibleql.local;
+const { host, pwd, user, db, port } = dbcreds;
 
 // const opts = 'postgres://postgres:deploy@localhost:5432/bible_api'
 const opts = {
   host,
   user,
-  port: 5432,
+  port,
   password: pwd,
   database: db,
   idleTimeoutMillis: 30000,

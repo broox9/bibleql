@@ -5,10 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "prepm2": "npm run build",
-    "pm2": "NODE_ENV=production pm2 start server/server.js",
+    "pm2": "NODE_ENV=production pm2 start process.json",
     "build": "./node_modules/.bin/webpack",
     "watchify": "./node_modules/.bin/watchify ./client/index.js -t -o ./public/app.js -t [ sveltify ] -t [ babelify --presets [ env ] --extensions [ .js .html] ] ",
-    "server": "nodemon server/server.js",
+    "server": "npx nodemon server/server.js",
     "start": "npm run build && npm run server",
     "watch": "npm run build -- -w",
     "start:dev": "npm run server && npm run watch",

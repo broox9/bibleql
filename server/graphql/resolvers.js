@@ -30,13 +30,13 @@ const rootValue = {
       .catch(e => console.log(e))
   },
 
-  /* = Single Word Queries */
+  /* = Single Word Queries - prod JAWS db + graphql seems to have an issue with "ORDER BY" */
   wordChapter: ({ book = 1, chapter = 1 }) => {
     //default is Genesis ch 1
     return dbClient.query(`
       SELECT * FROM public.bible_en
       WHERE book = $1 AND chapter = $2 AND NOT (lang_order = 0 AND clusterid > 1)
-      ORDER BY id ASC`, [book, chapter]
+      /* ORDER BY id ASC */`, [book, chapter]
     )
       .then(res => res.rows)
       .catch(e => console.log(e))
@@ -47,7 +47,7 @@ const rootValue = {
     return dbClient.query(`
       SELECT * FROM public.bible_en
       WHERE verseid BETWEEN $1 AND $2 AND lang_order > 0
-      ORDER BY lang_order ASC`,
+      /* ORDER BY lang_order ASC */`,
       [startId, endId]
     )
       .then(res => res.rows)
@@ -59,7 +59,7 @@ const rootValue = {
     return dbClient.query(`
       SELECT * FROM public.bible_en
       WHERE verseid = $1 AND lang_order > 0
-      ORDER BY lang_order ASC`, [verseid]
+      /* ORDER BY lang_order ASC */`, [verseid]
     )
       .then(res => res.rows)
       .catch(e => console.log(e))
